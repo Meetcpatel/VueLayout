@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <title>
+                    Vue with JSON    
+                    </title>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            
+      
+    </head>
+<body>
+    start 
+    <br/>
+    <div id="app">
+        <h1>Data in JSoN</h1>
+        <div v-for="udata in userData">
+            id:{{ udata.id }} Name: {{ udata.name }}
+
+        </div>
+<h1>End</h1>
+</div>
+        <script>
+            var dataURL='data.json';
+            var App=new Vue({
+                el:'#app',
+                data:{
+                    userData:[]
+                },
+                mounted(){
+                    var self=this
+                    $.getJSON(dataURL,function(data){
+                        self.userData=data.users;
+                    });
+                }
+            })
+        </script>
+</body>
+</html>
+
+
